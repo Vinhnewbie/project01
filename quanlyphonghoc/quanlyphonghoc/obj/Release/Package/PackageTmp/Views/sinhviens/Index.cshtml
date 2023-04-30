@@ -1,0 +1,277 @@
+﻿@*@model IEnumerable<quanlyphonghoc.sinhvien>*@
+@model IPagedList<quanlyphonghoc.sinhvien>
+@using PagedList.Mvc
+@using PagedList
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .pagination {
+    }
+
+        .pagination a {
+            color: black;
+            float: right;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+            .pagination a.active {
+                background-color: #4CAF50;
+                color: white;
+                border: 1px solid #4CAF50;
+            }
+
+            .pagination a:hover:not(.active) {
+                background-color: #ddd;
+            }
+</style>
+
+
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+
+<!--///////////////////////////////////////////////////////////////////////////////////-->
+<div class="form-group">
+    @using (Html.BeginForm("index", "sinhviens", FormMethod.Get))
+    {
+        <div class="form-group">
+            <table class="col-sm-12">
+                <tr>
+                    <td class="col-lg-9"></td>
+                </tr>
+                <tr>
+                    <td class="col-sm-3">
+                        @*<input class="form-control" id="myInput" type="text" placeholder="Search.." name="searchv2">*@
+                        @Html.TextBox("searchv2", null, new { @class = "control-control", @placeholder = "Search..." }) @*new { @class = "form-control", @placeholder = "Search..." })*@
+                        <input type="submit" value="Search" class="btn btn-success">
+                        @if (ViewBag.Message != null)
+                        {
+                            <div>@ViewBag.Message</div>
+                        }
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+
+
+
+        <table class="table">
+            <tr>
+
+                @*<th>
+                    @Html.DisplayNameFor(model => model.mssv)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.First().hoten)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().hoten)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().gioitinh)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().ngaysinh)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().diachi)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.lop.manghanh)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.First().lop.malop)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().lop.nganhhoc.tennghanh)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().HinhAnh)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.mssv)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hoten)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gioitinh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ngaysinh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.diachi)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.lop.manghanh)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lop.malop)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lop.nganhhoc.tennghanh)
+                    </td>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.HinhAnh)" style=" height:75px; width:75px; margin: 10px" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.mssv }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.mssv }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.mssv })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+
+</div>
+@*$(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var searchv2 = $(this).val();
+            $.ajax({
+                url: '@Url.Action("Search", "sinhviens")',
+                type: 'GET',
+                data: { searchv2: searchv2 },
+                success: function (data) {
+                    // Update the view with the search results
+                }
+            });
+        });
+    });*@
+
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+<div class="form-group">
+    @using (Html.BeginForm("index", "sinhviens", FormMethod.Get))
+    {
+        @*<div class="form-group">
+                <input type="text" name="query" placeholder="Search...">
+                <button type="submit">Search</button>
+            </div>*@
+
+        <table class="col-sm-12">
+            <tr>
+                <td class="col-sm-9">
+                    <span><b>Search By:</b></span>
+                    @Html.RadioButton("searchBy", "mssv", true)
+                    <text>mssv</text>
+                    @Html.RadioButton("searchBy", "hoten", true)
+                    <text>ho ten</text>
+                    @Html.RadioButton("searchBy", "malop", true)
+                    <text>ma lop</text>
+                    @Html.RadioButton("searchBy", "tennghanh", true)
+                    <text>ten nghanh</text>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-sm-3">
+                    @Html.TextBox("searchValue", null, new { @class = "control-control", placeholder = "Enter ho ten va ma lop va ten nghanh" })
+                    <input type="submit" value="Search" class="btn btn-success">
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <br />
+        <div>&nbsp;</div>
+        <table class="table">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.First().mssv)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().hoten)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().gioitinh)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().ngaysinh)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().diachi)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.lop.manghanh)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.First().lop.malop)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().lop.nganhhoc.tennghanh)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().HinhAnh)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.mssv)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hoten)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gioitinh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ngaysinh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.diachi)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.lop.manghanh)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lop.malop)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lop.nganhhoc.tennghanh)
+                    </td>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.HinhAnh)" style=" height:100px; width:100px; margin: 10px" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.mssv }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.mssv }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.mssv })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+</div>
+<div class="pagination">
+   
+ @Html.PagedListPager(Model, page => Url.Action("Index", "sinhviens", new {page, search = Request.QueryString["searchv2"] }))
+</div>
+

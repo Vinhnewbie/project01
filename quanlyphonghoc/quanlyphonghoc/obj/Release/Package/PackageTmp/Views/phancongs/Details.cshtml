@@ -1,0 +1,66 @@
+﻿@model quanlyphonghoc.phancong
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>phancong</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.hocky)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hocky)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.namhoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.namhoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.giangvien.hoten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.giangvien.hoten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lop.manghanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lop.manghanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lop1.manghanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lop1.manghanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monhoc.tenmh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monhoc.tenmh)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.mapc }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

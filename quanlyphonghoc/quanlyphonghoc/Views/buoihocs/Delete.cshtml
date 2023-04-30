@@ -1,0 +1,48 @@
+﻿@model quanlyphonghoc.buoihoc
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>buoihoc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ngay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tietbatdau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tietbatdau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sotiet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sotiet)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

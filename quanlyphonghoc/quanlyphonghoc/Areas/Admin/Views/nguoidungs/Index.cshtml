@@ -1,0 +1,57 @@
+﻿@model IEnumerable<quanlyphonghoc.nguoidung>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tendangnhap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.matkhau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tenguoidung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quyen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.motaquyen)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tendangnhap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.matkhau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tenguoidung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quyen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.motaquyen)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.tendangnhap }) |
+            @Html.ActionLink("Details", "Details", new { id = item.tendangnhap }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.tendangnhap })
+        </td>
+    </tr>
+}
+
+</table>

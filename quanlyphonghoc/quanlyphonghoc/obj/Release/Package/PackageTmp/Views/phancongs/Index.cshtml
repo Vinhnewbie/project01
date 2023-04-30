@@ -1,0 +1,75 @@
+﻿@model IEnumerable<quanlyphonghoc.phancong>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.hocky)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.namhoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.giangvien.hoten)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.lop.manghanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lop1.manghanh)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.lop.malop)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lop.nganhhoc.tennghanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monhoc.tenmh)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.hocky)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.namhoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.giangvien.hoten)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.lop.manghanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lop1.manghanh)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.lop.malop)
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.lop.nganhhoc.tennghanh)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.monhoc.tenmh)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.mapc }) |
+            @Html.ActionLink("Details", "Details", new { id = item.mapc }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.mapc })
+        </td>
+    </tr>
+}
+
+</table>

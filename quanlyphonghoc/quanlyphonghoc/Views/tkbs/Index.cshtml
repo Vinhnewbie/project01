@@ -1,0 +1,119 @@
+﻿@*@model IEnumerable<quanlyphonghoc.tkb>*@
+@model PagedList.IPagedList<quanlyphonghoc.tkb>
+    
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="form-group">
+    @using (Html.BeginForm("index", "tkbs", FormMethod.Get))
+    {
+        @*<div class="form-group">
+                <input type="text" name="query" placeholder="Search...">
+                <button type="submit">Search</button>
+            </div>*@
+
+        <table class="col-sm-12">
+            <tr>
+                <td class="col-sm-9">
+                    <span><b>Search By:</b></span>
+                    @Html.RadioButton("searchBy", "mapc", true)
+                    <text>ma pc</text>
+                    @Html.RadioButton("searchBy", "magv", true)
+                    <text>ma giang vien</text>
+                    @Html.RadioButton("searchBy", "maphong", true)
+                    <text>ma phong</text>
+                    @Html.RadioButton("searchBy", "malop", true)
+                    <text>ma lop</text>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-sm-3">
+                    @Html.TextBox("searchValue", null, new { @class = "control-control", placeholder = "Enter ho ten va ma lop va ten nghanh" })
+                    <input type="submit" value="Search" class="btn btn-success">
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <br />
+        <div>&nbsp;</div>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().mapc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().buoihoc1.buoihoc1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().buoihoc1.ngay)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().phancong.magv)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().phancong.giangvien.hoten)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().phonghoc.chucnang)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().maphong)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().phancong.lop.malop)
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.mapc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.buoihoc1.buoihoc1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.buoihoc1.ngay)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phancong.magv)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phancong.giangvien.hoten)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phonghoc.chucnang)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.maphong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phancong.lop.malop)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+</div>
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index","tkbs", new {page}))
+</div>

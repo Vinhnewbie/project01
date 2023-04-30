@@ -1,0 +1,128 @@
+﻿@*@model IEnumerable<quanlyphonghoc.giangvien>*@
+@model IPagedList<quanlyphonghoc.giangvien>
+
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<style>
+    .pagination {
+    }
+
+        .pagination a {
+            color: black;
+            float: right;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+            .pagination a.active {
+                background-color: #4CAF50;
+                color: white;
+                border: 1px solid #4CAF50;
+            }
+
+            .pagination a:hover:not(.active) {
+                background-color: #ddd;
+            }
+</style>
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="form-group">
+    @using (Html.BeginForm("index", "giangviens", FormMethod.Get))
+    {
+        @*<div class="form-group">
+                <input type="text" name="query" placeholder="Search...">
+                <button type="submit">Search</button>
+            </div>*@
+
+        <table class="col-sm-12">
+            <tr>
+                <td class="col-sm-9">
+                    <span><b>Search By:</b></span>
+                    @Html.RadioButton("searchBy", "magv", true)
+                    <text>ma giang vien</text>
+                    @Html.RadioButton("searchBy", "hoten", true)
+                    <text>ho ten</text>
+                    @Html.RadioButton("searchBy", "trentrinhdo", true)
+                    <text>trinh do</text>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-sm-3">
+                    @Html.TextBox("searchValue", null, new { @class = "control-control", placeholder = "Enter ho ten va ma giang vien, trinh do" })
+                    <input type="submit" value="Search" class="btn btn-success">
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <br />
+        <div>&nbsp;</div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().magv)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().hoten)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().gioitinh)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().diachi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().trinhdo.trentrinhdo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().HinhAnh)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.magv)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hoten)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gioitinh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.diachi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.trinhdo.trentrinhdo)
+                    </td>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.HinhAnh)" style=" height:100px; width:100px; margin: 10px" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.magv }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.magv }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.magv })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+</div>
+<div class="pagination">
+    @Html.PagedListPager(Model, page => Url.Action("Index", "giangviens", new { page }))
+</div>

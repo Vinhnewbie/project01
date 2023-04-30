@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="quanlylichhoc2ModelStoreContainer" CdmEntityContainer="quanlylichhoc2Entities">
+    <EntitySetMapping Name="buoihocs">
+      <EntityTypeMapping TypeName="quanlylichhoc2Model.buoihoc">
+        <MappingFragment StoreEntitySet="buoihoc">
+          <ScalarProperty Name="buoihoc1" ColumnName="buoihoc" />
+          <ScalarProperty Name="ngay" ColumnName="ngay" />
+          <ScalarProperty Name="tietbatdau" ColumnName="tietbatdau" />
+          <ScalarProperty Name="sotiet" ColumnName="sotiet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="giangviens">
+      <EntityTypeMapping TypeName="quanlylichhoc2Model.giangvien">
+        <MappingFragment StoreEntitySet="giangvien">
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="magv" ColumnName="magv" />
+          <ScalarProperty Name="hoten" ColumnName="hoten" />
+          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="matrinhdo" ColumnName="matrinhdo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lops">
+      <EntityTypeMapping TypeName="quanlylichhoc2Model.lop">
+        <MappingFragment StoreEntitySet="lop">
+          <ScalarProperty Name="malop" ColumnName="malop" />
+          <ScalarProperty Name="manghanh" ColumnName="manghanh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="monhocs">
+      <EntityTypeMapping TypeName="quanlylichhoc2Model.monhoc">
+        <MappingFragment StoreEntitySet="monhoc">
+          <ScalarProperty Name="mamh" ColumnName="mamh" />
+          <ScalarProperty Name="tenmh" ColumnName="tenmh" />
+          <ScalarProperty Name="stc" ColumnName="stc" />
+          <ScalarProperty Name="lythuyet" ColumnName="lythuyet" />
+          <ScalarProperty Name="thuchanh" ColumnName="thuchanh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nganhhocs">
+      <EntityTypeMapping TypeName="quanlylichhoc2Model.nganhhoc">
+        <MappingFragment StoreEntitySet="nganhhoc">
+          <ScalarProperty Name="manghanh" ColumnName="manghanh" />
+          <ScalarProperty Name="tennghanh" ColumnName="tennghanh" />
+          <ScalarProperty Name="khoa" ColumnName="khoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nguoidungs">
+      <EntityTypeMapping TypeName="quanlylichhoc2Model.nguoidung">
+        <MappingFragment StoreEntitySet="nguoidung">
+          <ScalarProperty Name="tendangnhap" ColumnName="tendangnhap" />
+          <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+          <ScalarProperty Name="tenguoidung" ColumnName="tenguoidung" />
+          <ScalarProperty Name="quyen" ColumnName="quyen" />
+          <ScalarProperty Name="motaquyen" ColumnName="motaquyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="phancongs">
+      <EntityTypeMapping TypeName="quanlylichhoc2Model.phancong">
+        <MappingFragment StoreEntitySet="phancong">
+          <ScalarProperty Name="mapc" ColumnName="mapc" />
+          <ScalarProperty Name="magv" ColumnName="magv" />
+          <ScalarProperty Name="mamh" ColumnName="mamh" />
+          <ScalarProperty Name="malop" ColumnName="malop" />
+          <ScalarProperty Name="hocky" ColumnName="hocky" />
+          <ScalarProperty Name="namhoc" ColumnName="namhoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="phonghocs">
+      <EntityTypeMapping TypeName="quanlylichhoc2Model.phonghoc">
+        <MappingFragment StoreEntitySet="phonghoc">
+          <ScalarProperty Name="maphong" ColumnName="maphong" />
+          <ScalarProperty Name="chucnang" ColumnName="chucnang" />
+          <ScalarProperty Name="succhua" ColumnName="succhua" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sinhviens">
+      <EntityTypeMapping TypeName="quanlylichhoc2Model.sinhvien">
+        <MappingFragment StoreEntitySet="sinhvien">
+          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="mssv" ColumnName="mssv" />
+          <ScalarProperty Name="hoten" ColumnName="hoten" />
+          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="malop" ColumnName="malop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tkbs">
+      <EntityTypeMapping TypeName="quanlylichhoc2Model.tkb">
+        <MappingFragment StoreEntitySet="tkb">
+          <ScalarProperty Name="mapc" ColumnName="mapc" />
+          <ScalarProperty Name="buoihoc" ColumnName="buoihoc" />
+          <ScalarProperty Name="maphong" ColumnName="maphong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trinhdoes">
+      <EntityTypeMapping TypeName="quanlylichhoc2Model.trinhdo">
+        <MappingFragment StoreEntitySet="trinhdo">
+          <ScalarProperty Name="matrinhdo" ColumnName="matrinhdo" />
+          <ScalarProperty Name="trentrinhdo" ColumnName="trentrinhdo" />
+          <ScalarProperty Name="hesoluong" ColumnName="hesoluong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="denghi" TypeName="quanlylichhoc2Model.denghi" StoreEntitySet="denghi">
+      <EndProperty Name="buoihoc">
+        <ScalarProperty Name="buoihoc1" ColumnName="buoihoc" />
+      </EndProperty>
+      <EndProperty Name="phancong">
+        <ScalarProperty Name="mapc" ColumnName="mapc" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

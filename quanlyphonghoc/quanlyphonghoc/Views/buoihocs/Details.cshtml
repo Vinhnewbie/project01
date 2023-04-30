@@ -1,0 +1,42 @@
+﻿@model quanlyphonghoc.buoihoc
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>buoihoc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ngay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tietbatdau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tietbatdau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sotiet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sotiet)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.buoihoc1 }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

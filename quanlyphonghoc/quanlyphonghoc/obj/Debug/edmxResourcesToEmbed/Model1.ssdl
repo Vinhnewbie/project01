@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="quanlylichhoc2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="buoihoc">
+    <Key>
+      <PropertyRef Name="buoihoc" />
+    </Key>
+    <Property Name="buoihoc" Type="int" Nullable="false" />
+    <Property Name="ngay" Type="date" Nullable="false" />
+    <Property Name="tietbatdau" Type="int" Nullable="false" />
+    <Property Name="sotiet" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="denghi">
+    <Key>
+      <PropertyRef Name="mapc" />
+      <PropertyRef Name="buoihoc" />
+    </Key>
+    <Property Name="mapc" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="buoihoc" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="giangvien">
+    <Key>
+      <PropertyRef Name="magv" />
+    </Key>
+    <Property Name="magv" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="hoten" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="gioitinh" Type="varchar" MaxLength="5" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="50" />
+    <Property Name="matrinhdo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="HinhAnh" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="lop">
+    <Key>
+      <PropertyRef Name="malop" />
+    </Key>
+    <Property Name="malop" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="manghanh" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="monhoc">
+    <Key>
+      <PropertyRef Name="mamh" />
+    </Key>
+    <Property Name="mamh" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tenmh" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="stc" Type="int" />
+    <Property Name="lythuyet" Type="int" />
+    <Property Name="thuchanh" Type="int" />
+  </EntityType>
+  <EntityType Name="nganhhoc">
+    <Key>
+      <PropertyRef Name="manghanh" />
+    </Key>
+    <Property Name="manghanh" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tennghanh" Type="nvarchar" MaxLength="50" />
+    <Property Name="khoa" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="nguoidung">
+    <Key>
+      <PropertyRef Name="tendangnhap" />
+    </Key>
+    <Property Name="tendangnhap" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="matkhau" Type="varchar" MaxLength="50" />
+    <Property Name="tenguoidung" Type="nvarchar" MaxLength="50" />
+    <Property Name="quyen" Type="int" />
+    <Property Name="motaquyen" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="phancong">
+    <Key>
+      <PropertyRef Name="mapc" />
+    </Key>
+    <Property Name="mapc" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="magv" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="mamh" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="malop" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="hocky" Type="int" Nullable="false" />
+    <Property Name="namhoc" Type="int" />
+  </EntityType>
+  <EntityType Name="phonghoc">
+    <Key>
+      <PropertyRef Name="maphong" />
+    </Key>
+    <Property Name="maphong" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="chucnang" Type="nvarchar" MaxLength="50" />
+    <Property Name="succhua" Type="int" Nullable="false" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sinhvien">
+    <Key>
+      <PropertyRef Name="mssv" />
+    </Key>
+    <Property Name="mssv" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="hoten" Type="nvarchar" MaxLength="50" />
+    <Property Name="gioitinh" Type="nvarchar" MaxLength="3" />
+    <Property Name="ngaysinh" Type="datetime" />
+    <Property Name="diachi" Type="varchar" MaxLength="50" />
+    <Property Name="malop" Type="varchar" MaxLength="10" />
+    <Property Name="HinhAnh" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tkb">
+    <Key>
+      <PropertyRef Name="mapc" />
+      <PropertyRef Name="buoihoc" />
+    </Key>
+    <Property Name="mapc" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="buoihoc" Type="int" Nullable="false" />
+    <Property Name="maphong" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="trinhdo">
+    <Key>
+      <PropertyRef Name="matrinhdo" />
+    </Key>
+    <Property Name="matrinhdo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="trentrinhdo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="hesoluong" Type="float" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_denghi_buoihoc">
+    <End Role="buoihoc" Type="Self.buoihoc" Multiplicity="1" />
+    <End Role="denghi" Type="Self.denghi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="buoihoc">
+        <PropertyRef Name="buoihoc" />
+      </Principal>
+      <Dependent Role="denghi">
+        <PropertyRef Name="buoihoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_denghi_phancong">
+    <End Role="phancong" Type="Self.phancong" Multiplicity="1" />
+    <End Role="denghi" Type="Self.denghi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phancong">
+        <PropertyRef Name="mapc" />
+      </Principal>
+      <Dependent Role="denghi">
+        <PropertyRef Name="mapc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_giangvien_trinhdo">
+    <End Role="trinhdo" Type="Self.trinhdo" Multiplicity="1" />
+    <End Role="giangvien" Type="Self.giangvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trinhdo">
+        <PropertyRef Name="matrinhdo" />
+      </Principal>
+      <Dependent Role="giangvien">
+        <PropertyRef Name="matrinhdo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_lop_nganhhoc">
+    <End Role="nganhhoc" Type="Self.nganhhoc" Multiplicity="1" />
+    <End Role="lop" Type="Self.lop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nganhhoc">
+        <PropertyRef Name="manghanh" />
+      </Principal>
+      <Dependent Role="lop">
+        <PropertyRef Name="manghanh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_phancong_giangvien">
+    <End Role="giangvien" Type="Self.giangvien" Multiplicity="1" />
+    <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="giangvien">
+        <PropertyRef Name="magv" />
+      </Principal>
+      <Dependent Role="phancong">
+        <PropertyRef Name="magv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_phancong_lop">
+    <End Role="lop" Type="Self.lop" Multiplicity="1" />
+    <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lop">
+        <PropertyRef Name="malop" />
+      </Principal>
+      <Dependent Role="phancong">
+        <PropertyRef Name="malop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_phancong_lop1">
+    <End Role="lop" Type="Self.lop" Multiplicity="1" />
+    <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lop">
+        <PropertyRef Name="malop" />
+      </Principal>
+      <Dependent Role="phancong">
+        <PropertyRef Name="malop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_phancong_monhoc">
+    <End Role="monhoc" Type="Self.monhoc" Multiplicity="1" />
+    <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="monhoc">
+        <PropertyRef Name="mamh" />
+      </Principal>
+      <Dependent Role="phancong">
+        <PropertyRef Name="mamh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sinhvien_lop">
+    <End Role="lop" Type="Self.lop" Multiplicity="0..1" />
+    <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lop">
+        <PropertyRef Name="malop" />
+      </Principal>
+      <Dependent Role="sinhvien">
+        <PropertyRef Name="malop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tkb_buoihoc">
+    <End Role="buoihoc" Type="Self.buoihoc" Multiplicity="1" />
+    <End Role="tkb" Type="Self.tkb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="buoihoc">
+        <PropertyRef Name="buoihoc" />
+      </Principal>
+      <Dependent Role="tkb">
+        <PropertyRef Name="buoihoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tkb_phancong">
+    <End Role="phancong" Type="Self.phancong" Multiplicity="1" />
+    <End Role="tkb" Type="Self.tkb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phancong">
+        <PropertyRef Name="mapc" />
+      </Principal>
+      <Dependent Role="tkb">
+        <PropertyRef Name="mapc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tkb_phonghoc">
+    <End Role="phonghoc" Type="Self.phonghoc" Multiplicity="1" />
+    <End Role="tkb" Type="Self.tkb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phonghoc">
+        <PropertyRef Name="maphong" />
+      </Principal>
+      <Dependent Role="tkb">
+        <PropertyRef Name="maphong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="quanlylichhoc2ModelStoreContainer">
+    <EntitySet Name="buoihoc" EntityType="Self.buoihoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="denghi" EntityType="Self.denghi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="giangvien" EntityType="Self.giangvien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lop" EntityType="Self.lop" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="monhoc" EntityType="Self.monhoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nganhhoc" EntityType="Self.nganhhoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nguoidung" EntityType="Self.nguoidung" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="phancong" EntityType="Self.phancong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="phonghoc" EntityType="Self.phonghoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sinhvien" EntityType="Self.sinhvien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tkb" EntityType="Self.tkb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trinhdo" EntityType="Self.trinhdo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_denghi_buoihoc" Association="Self.FK_denghi_buoihoc">
+      <End Role="buoihoc" EntitySet="buoihoc" />
+      <End Role="denghi" EntitySet="denghi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_denghi_phancong" Association="Self.FK_denghi_phancong">
+      <End Role="phancong" EntitySet="phancong" />
+      <End Role="denghi" EntitySet="denghi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_giangvien_trinhdo" Association="Self.FK_giangvien_trinhdo">
+      <End Role="trinhdo" EntitySet="trinhdo" />
+      <End Role="giangvien" EntitySet="giangvien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_lop_nganhhoc" Association="Self.FK_lop_nganhhoc">
+      <End Role="nganhhoc" EntitySet="nganhhoc" />
+      <End Role="lop" EntitySet="lop" />
+    </AssociationSet>
+    <AssociationSet Name="FK_phancong_giangvien" Association="Self.FK_phancong_giangvien">
+      <End Role="giangvien" EntitySet="giangvien" />
+      <End Role="phancong" EntitySet="phancong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_phancong_lop" Association="Self.FK_phancong_lop">
+      <End Role="lop" EntitySet="lop" />
+      <End Role="phancong" EntitySet="phancong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_phancong_lop1" Association="Self.FK_phancong_lop1">
+      <End Role="lop" EntitySet="lop" />
+      <End Role="phancong" EntitySet="phancong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_phancong_monhoc" Association="Self.FK_phancong_monhoc">
+      <End Role="monhoc" EntitySet="monhoc" />
+      <End Role="phancong" EntitySet="phancong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sinhvien_lop" Association="Self.FK_sinhvien_lop">
+      <End Role="lop" EntitySet="lop" />
+      <End Role="sinhvien" EntitySet="sinhvien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tkb_buoihoc" Association="Self.FK_tkb_buoihoc">
+      <End Role="buoihoc" EntitySet="buoihoc" />
+      <End Role="tkb" EntitySet="tkb" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tkb_phancong" Association="Self.FK_tkb_phancong">
+      <End Role="phancong" EntitySet="phancong" />
+      <End Role="tkb" EntitySet="tkb" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tkb_phonghoc" Association="Self.FK_tkb_phonghoc">
+      <End Role="phonghoc" EntitySet="phonghoc" />
+      <End Role="tkb" EntitySet="tkb" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

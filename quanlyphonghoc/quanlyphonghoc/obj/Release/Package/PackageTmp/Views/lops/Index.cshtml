@@ -1,0 +1,34 @@
+﻿@model IEnumerable<quanlyphonghoc.lop>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.nganhhoc.tennghanh)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nganhhoc.tennghanh)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.malop }) |
+            @Html.ActionLink("Details", "Details", new { id=item.malop }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.malop })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,50 @@
+﻿@model quanlyphonghoc.monhoc
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>monhoc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenmh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenmh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lythuyet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lythuyet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.thuchanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.thuchanh)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.mamh }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

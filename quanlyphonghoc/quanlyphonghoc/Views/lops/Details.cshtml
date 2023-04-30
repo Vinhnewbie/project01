@@ -1,0 +1,33 @@
+﻿@model quanlyphonghoc.lop
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>lop</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.malop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.malop)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.nganhhoc.tennghanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nganhhoc.tennghanh)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.malop }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

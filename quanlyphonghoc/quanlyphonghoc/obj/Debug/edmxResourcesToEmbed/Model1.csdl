@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="quanlylichhoc2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="buoihoc">
+    <Key>
+      <PropertyRef Name="buoihoc1" />
+    </Key>
+    <Property Name="buoihoc1" Type="Int32" Nullable="false" />
+    <Property Name="ngay" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="tietbatdau" Type="Int32" Nullable="false" />
+    <Property Name="sotiet" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tkbs" Relationship="Self.FK_tkb_buoihoc" FromRole="buoihoc" ToRole="tkb" />
+    <NavigationProperty Name="phancongs" Relationship="Self.denghi" FromRole="buoihoc" ToRole="phancong" />
+  </EntityType>
+  <EntityType Name="giangvien">
+    <Key>
+      <PropertyRef Name="magv" />
+    </Key>
+    <Property Name="magv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="gioitinh" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="matrinhdo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="trinhdo" Relationship="Self.FK_giangvien_trinhdo" FromRole="giangvien" ToRole="trinhdo" />
+    <NavigationProperty Name="phancongs" Relationship="Self.FK_phancong_giangvien" FromRole="giangvien" ToRole="phancong" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="lop">
+    <Key>
+      <PropertyRef Name="malop" />
+    </Key>
+    <Property Name="malop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="manghanh" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="nganhhoc" Relationship="Self.FK_lop_nganhhoc" FromRole="lop" ToRole="nganhhoc" />
+    <NavigationProperty Name="phancongs" Relationship="Self.FK_phancong_lop" FromRole="lop" ToRole="phancong" />
+    <NavigationProperty Name="phancongs1" Relationship="Self.FK_phancong_lop1" FromRole="lop" ToRole="phancong" />
+    <NavigationProperty Name="sinhviens" Relationship="Self.FK_sinhvien_lop" FromRole="lop" ToRole="sinhvien" />
+  </EntityType>
+  <EntityType Name="monhoc">
+    <Key>
+      <PropertyRef Name="mamh" />
+    </Key>
+    <Property Name="mamh" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tenmh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="stc" Type="Int32" />
+    <Property Name="lythuyet" Type="Int32" />
+    <Property Name="thuchanh" Type="Int32" />
+    <NavigationProperty Name="phancongs" Relationship="Self.FK_phancong_monhoc" FromRole="monhoc" ToRole="phancong" />
+  </EntityType>
+  <EntityType Name="nganhhoc">
+    <Key>
+      <PropertyRef Name="manghanh" />
+    </Key>
+    <Property Name="manghanh" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tennghanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="khoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="lops" Relationship="Self.FK_lop_nganhhoc" FromRole="nganhhoc" ToRole="lop" />
+  </EntityType>
+  <EntityType Name="nguoidung">
+    <Key>
+      <PropertyRef Name="tendangnhap" />
+    </Key>
+    <Property Name="tendangnhap" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenguoidung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="quyen" Type="Int32" />
+    <Property Name="motaquyen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="phancong">
+    <Key>
+      <PropertyRef Name="mapc" />
+    </Key>
+    <Property Name="mapc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="magv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mamh" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="malop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hocky" Type="Int32" Nullable="false" />
+    <Property Name="namhoc" Type="Int32" />
+    <NavigationProperty Name="giangvien" Relationship="Self.FK_phancong_giangvien" FromRole="phancong" ToRole="giangvien" />
+    <NavigationProperty Name="lop" Relationship="Self.FK_phancong_lop" FromRole="phancong" ToRole="lop" />
+    <NavigationProperty Name="lop1" Relationship="Self.FK_phancong_lop1" FromRole="phancong" ToRole="lop" />
+    <NavigationProperty Name="monhoc" Relationship="Self.FK_phancong_monhoc" FromRole="phancong" ToRole="monhoc" />
+    <NavigationProperty Name="tkbs" Relationship="Self.FK_tkb_phancong" FromRole="phancong" ToRole="tkb" />
+    <NavigationProperty Name="buoihocs" Relationship="Self.denghi" FromRole="phancong" ToRole="buoihoc" />
+  </EntityType>
+  <EntityType Name="phonghoc">
+    <Key>
+      <PropertyRef Name="maphong" />
+    </Key>
+    <Property Name="maphong" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="chucnang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="succhua" Type="Int32" Nullable="false" />
+    <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tkbs" Relationship="Self.FK_tkb_phonghoc" FromRole="phonghoc" ToRole="tkb" />
+  </EntityType>
+  <EntityType Name="sinhvien">
+    <Key>
+      <PropertyRef Name="mssv" />
+    </Key>
+    <Property Name="mssv" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysinh" Type="DateTime" Precision="3" />
+    <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="malop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="lop" Relationship="Self.FK_sinhvien_lop" FromRole="sinhvien" ToRole="lop" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="gioitinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tkb">
+    <Key>
+      <PropertyRef Name="mapc" />
+      <PropertyRef Name="buoihoc" />
+    </Key>
+    <Property Name="mapc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="buoihoc" Type="Int32" Nullable="false" />
+    <Property Name="maphong" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="buoihoc1" Relationship="Self.FK_tkb_buoihoc" FromRole="tkb" ToRole="buoihoc" />
+    <NavigationProperty Name="phancong" Relationship="Self.FK_tkb_phancong" FromRole="tkb" ToRole="phancong" />
+    <NavigationProperty Name="phonghoc" Relationship="Self.FK_tkb_phonghoc" FromRole="tkb" ToRole="phonghoc" />
+  </EntityType>
+  <EntityType Name="trinhdo">
+    <Key>
+      <PropertyRef Name="matrinhdo" />
+    </Key>
+    <Property Name="matrinhdo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="trentrinhdo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="hesoluong" Type="Double" Nullable="false" />
+    <NavigationProperty Name="giangviens" Relationship="Self.FK_giangvien_trinhdo" FromRole="trinhdo" ToRole="giangvien" />
+  </EntityType>
+  <Association Name="FK_tkb_buoihoc">
+    <End Role="buoihoc" Type="Self.buoihoc" Multiplicity="1" />
+    <End Role="tkb" Type="Self.tkb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="buoihoc">
+        <PropertyRef Name="buoihoc1" />
+      </Principal>
+      <Dependent Role="tkb">
+        <PropertyRef Name="buoihoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_giangvien_trinhdo">
+    <End Role="trinhdo" Type="Self.trinhdo" Multiplicity="1" />
+    <End Role="giangvien" Type="Self.giangvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trinhdo">
+        <PropertyRef Name="matrinhdo" />
+      </Principal>
+      <Dependent Role="giangvien">
+        <PropertyRef Name="matrinhdo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_phancong_giangvien">
+    <End Role="giangvien" Type="Self.giangvien" Multiplicity="1" />
+    <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="giangvien">
+        <PropertyRef Name="magv" />
+      </Principal>
+      <Dependent Role="phancong">
+        <PropertyRef Name="magv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_lop_nganhhoc">
+    <End Role="nganhhoc" Type="Self.nganhhoc" Multiplicity="1" />
+    <End Role="lop" Type="Self.lop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nganhhoc">
+        <PropertyRef Name="manghanh" />
+      </Principal>
+      <Dependent Role="lop">
+        <PropertyRef Name="manghanh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_phancong_lop">
+    <End Role="lop" Type="Self.lop" Multiplicity="1" />
+    <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lop">
+        <PropertyRef Name="malop" />
+      </Principal>
+      <Dependent Role="phancong">
+        <PropertyRef Name="malop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_phancong_lop1">
+    <End Role="lop" Type="Self.lop" Multiplicity="1" />
+    <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lop">
+        <PropertyRef Name="malop" />
+      </Principal>
+      <Dependent Role="phancong">
+        <PropertyRef Name="malop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sinhvien_lop">
+    <End Role="lop" Type="Self.lop" Multiplicity="0..1" />
+    <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lop">
+        <PropertyRef Name="malop" />
+      </Principal>
+      <Dependent Role="sinhvien">
+        <PropertyRef Name="malop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_phancong_monhoc">
+    <End Role="monhoc" Type="Self.monhoc" Multiplicity="1" />
+    <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="monhoc">
+        <PropertyRef Name="mamh" />
+      </Principal>
+      <Dependent Role="phancong">
+        <PropertyRef Name="mamh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tkb_phancong">
+    <End Role="phancong" Type="Self.phancong" Multiplicity="1" />
+    <End Role="tkb" Type="Self.tkb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phancong">
+        <PropertyRef Name="mapc" />
+      </Principal>
+      <Dependent Role="tkb">
+        <PropertyRef Name="mapc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tkb_phonghoc">
+    <End Role="phonghoc" Type="Self.phonghoc" Multiplicity="1" />
+    <End Role="tkb" Type="Self.tkb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phonghoc">
+        <PropertyRef Name="maphong" />
+      </Principal>
+      <Dependent Role="tkb">
+        <PropertyRef Name="maphong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="denghi">
+    <End Role="buoihoc" Type="Self.buoihoc" Multiplicity="*" />
+    <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="quanlylichhoc2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="buoihocs" EntityType="Self.buoihoc" />
+    <EntitySet Name="giangviens" EntityType="Self.giangvien" />
+    <EntitySet Name="lops" EntityType="Self.lop" />
+    <EntitySet Name="monhocs" EntityType="Self.monhoc" />
+    <EntitySet Name="nganhhocs" EntityType="Self.nganhhoc" />
+    <EntitySet Name="nguoidungs" EntityType="Self.nguoidung" />
+    <EntitySet Name="phancongs" EntityType="Self.phancong" />
+    <EntitySet Name="phonghocs" EntityType="Self.phonghoc" />
+    <EntitySet Name="sinhviens" EntityType="Self.sinhvien" />
+    <EntitySet Name="tkbs" EntityType="Self.tkb" />
+    <EntitySet Name="trinhdoes" EntityType="Self.trinhdo" />
+    <AssociationSet Name="FK_tkb_buoihoc" Association="Self.FK_tkb_buoihoc">
+      <End Role="buoihoc" EntitySet="buoihocs" />
+      <End Role="tkb" EntitySet="tkbs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_giangvien_trinhdo" Association="Self.FK_giangvien_trinhdo">
+      <End Role="trinhdo" EntitySet="trinhdoes" />
+      <End Role="giangvien" EntitySet="giangviens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_phancong_giangvien" Association="Self.FK_phancong_giangvien">
+      <End Role="giangvien" EntitySet="giangviens" />
+      <End Role="phancong" EntitySet="phancongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_lop_nganhhoc" Association="Self.FK_lop_nganhhoc">
+      <End Role="nganhhoc" EntitySet="nganhhocs" />
+      <End Role="lop" EntitySet="lops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_phancong_lop" Association="Self.FK_phancong_lop">
+      <End Role="lop" EntitySet="lops" />
+      <End Role="phancong" EntitySet="phancongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_phancong_lop1" Association="Self.FK_phancong_lop1">
+      <End Role="lop" EntitySet="lops" />
+      <End Role="phancong" EntitySet="phancongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sinhvien_lop" Association="Self.FK_sinhvien_lop">
+      <End Role="lop" EntitySet="lops" />
+      <End Role="sinhvien" EntitySet="sinhviens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_phancong_monhoc" Association="Self.FK_phancong_monhoc">
+      <End Role="monhoc" EntitySet="monhocs" />
+      <End Role="phancong" EntitySet="phancongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tkb_phancong" Association="Self.FK_tkb_phancong">
+      <End Role="phancong" EntitySet="phancongs" />
+      <End Role="tkb" EntitySet="tkbs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tkb_phonghoc" Association="Self.FK_tkb_phonghoc">
+      <End Role="phonghoc" EntitySet="phonghocs" />
+      <End Role="tkb" EntitySet="tkbs" />
+    </AssociationSet>
+    <AssociationSet Name="denghi" Association="Self.denghi">
+      <End Role="buoihoc" EntitySet="buoihocs" />
+      <End Role="phancong" EntitySet="phancongs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

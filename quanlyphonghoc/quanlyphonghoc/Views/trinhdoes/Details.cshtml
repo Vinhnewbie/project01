@@ -1,0 +1,34 @@
+﻿@model quanlyphonghoc.trinhdo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>trinhdo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.trentrinhdo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trentrinhdo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hesoluong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hesoluong)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.matrinhdo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
